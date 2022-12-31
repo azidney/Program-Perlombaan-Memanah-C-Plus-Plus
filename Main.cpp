@@ -50,6 +50,30 @@ int hitungNomor(int i)
     }
     return nomor;
 }
+// method return untuk juara
+string juara(int juar)
+{
+    if (juar == 1)
+    {
+        return "pertama";
+    }
+    else if (juar == 2)
+    {
+        return "kedua";
+    }
+    else if (juar == 3)
+    {
+        return "ketiga";
+    }
+    else if (juar == 4)
+    {
+        return "keempat";
+    }
+    else
+    {
+        return "kelima";
+    }
+}
 
 // method dashboard user (menu - menu yang ada di user)
 void dashboard(User *user)
