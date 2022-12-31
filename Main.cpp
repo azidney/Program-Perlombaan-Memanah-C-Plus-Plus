@@ -29,51 +29,22 @@ public:
 };
 
 // prototype method header
-void headerScreen();
-void headerMenu();
+void headerMenuAwal();
+void menuAwal();
 void headerMenuUser();
+void headerFiturLomba();
+void headerFiturCariPeserta();
+void headerFiturHasilPertandingan();
+void headerFiturDaftarJuara();
 
 // prototype method footer
 void footer();
 
-// method algoritma lomba memanah
-int hitungNomor(int i)
-{
-    int nomor = 0;
-    for (int a = 1; a <= 10; ++a)
-    {
-        if (a == i)
-        {
-            nomor = 100 - ((a * 10) - 10);
-            break;
-        }
-    }
-    return nomor;
-}
-// method return untuk juara
-string juara(int juar)
-{
-    if (juar == 1)
-    {
-        return "pertama";
-    }
-    else if (juar == 2)
-    {
-        return "kedua";
-    }
-    else if (juar == 3)
-    {
-        return "ketiga";
-    }
-    else if (juar == 4)
-    {
-        return "keempat";
-    }
-    else
-    {
-        return "kelima";
-    }
-}
+// prototype algoritma lomba memanah
+int hitungNomor(int i);
+
+// prototype untuk hasil juara
+string juara(int juar);
 
 // method dashboard user (menu - menu yang ada di user)
 void dashboard(User *user)
@@ -108,9 +79,7 @@ void dashboard(User *user)
             if (cek == 0)
             {
                 system("cls");
-                cout << "+============================+" << endl;
-                cout << "|      PROGRAM MEMANAH       |" << endl;
-                cout << "+============================+" << endl;
+                headerFiturLomba();
                 cout << "KETENTUAN : " << endl;
                 cout << "1. Peserta memili Kesempatan memanah sebanyak 3x" << endl;
                 cout << "2. Sasaran memanah diberi nomor 1 hingga 10" << endl;
@@ -183,10 +152,7 @@ void dashboard(User *user)
             int cek = 0;
             ifstream buka;
             system("cls");
-            cout << "+==========================+" << endl;
-            cout << "|       CARI PESERTA       |" << endl;
-            cout << "+==========================+\n"
-                 << endl;
+            headerFiturCariPeserta();
             cout << "Masukkan Username : ";
             cin >> username;
             buka.open("dataUser.txt", ios::in);
@@ -260,11 +226,7 @@ void dashboard(User *user)
             string user, nilai1, nilai2, nilai3, total;
             ifstream buka;
             system("cls");
-            cout << "+==========================================================================+" << endl;
-            cout << "|                            HASIL PERTANDINGAN                            |" << endl;
-            cout << "+==========================================================================+" << endl;
-            cout << "| NO |    NAMA PESERTA    | NILAI KE-1 | NILAI KE-2 | NILAI KE-3 |  TOTAL  |" << endl;
-            cout << "+--------------------------------------------------------------------------+" << endl;
+            headerFiturHasilPertandingan();
             buka.open("dataLomba.txt", ios::in);
             int no = 1, cek = 0;
             if (buka.fail())
@@ -319,8 +281,7 @@ void dashboard(User *user)
             int no = 1, cek = 0, index = 0;
             ifstream buka;
             system("cls");
-            cout << "+===================================================+" << endl;
-            cout << "|                    DAFTAR JUARA                   |" << endl;
+            headerFiturDaftarJuara();
             buka.open("dataLomba.txt", ios::in);
             int sizeData = 0;
             if (buka.fail())
@@ -434,7 +395,7 @@ int main(int argc, char const *argv[])
     do
     {
         system("cls");
-        headerMenu();
+        menuAwal();
         cout << "Silahkan Pilih Menu : ";
         cin >> menu;
         if (menu == "1")
@@ -654,17 +615,57 @@ bool User::daftar()
     }
 }
 
+// method algoritma lomba memanah
+int hitungNomor(int i)
+{
+    int nomor = 0;
+    for (int a = 1; a <= 10; ++a)
+    {
+        if (a == i)
+        {
+            nomor = 100 - ((a * 10) - 10);
+            break;
+        }
+    }
+    return nomor;
+}
+
+// method return untuk juara
+string juara(int juar)
+{
+    if (juar == 1)
+    {
+        return "pertama";
+    }
+    else if (juar == 2)
+    {
+        return "kedua";
+    }
+    else if (juar == 3)
+    {
+        return "ketiga";
+    }
+    else if (juar == 4)
+    {
+        return "keempat";
+    }
+    else
+    {
+        return "kelima";
+    }
+}
+
 // method header
-void headerScreen()
+void headerMenuAwal()
 {
     cout << "+===================================+" << endl;
     cout << "| SELAMAT DATANG DI PROGRAM MEMANAH |" << endl;
     cout << "+===================================+" << endl;
     cout << endl;
 }
-void headerMenu()
+void menuAwal()
 {
-    headerScreen();
+    headerMenuAwal();
     cout << "+==============+" << endl;
     cout << "|     MENU     |" << endl;
     cout << "|==============|" << endl;
@@ -683,7 +684,34 @@ void headerMenuUser()
     cout << "| 5. Logout             |" << endl;
     cout << "+=======================+" << endl;
 };
+void headerFiturLomba()
+{
+    cout << "+============================+" << endl;
+    cout << "|      PROGRAM MEMANAH       |" << endl;
+    cout << "+============================+" << endl;
+};
 
+void headerFiturCariPeserta()
+{
+    cout << "+==========================+" << endl;
+    cout << "|       CARI PESERTA       |" << endl;
+    cout << "+==========================+\n"
+         << endl;
+};
+void headerFiturHasilPertandingan()
+{
+    cout << "+==========================================================================+" << endl;
+    cout << "|                            HASIL PERTANDINGAN                            |" << endl;
+    cout << "+==========================================================================+" << endl;
+    cout << "| NO |    NAMA PESERTA    | NILAI KE-1 | NILAI KE-2 | NILAI KE-3 |  TOTAL  |" << endl;
+    cout << "+--------------------------------------------------------------------------+" << endl;
+};
+
+void headerFiturDaftarJuara()
+{
+    cout << "+===================================================+" << endl;
+    cout << "|                    DAFTAR JUARA                   |" << endl;
+};
 // method footer
 void footer()
 {
