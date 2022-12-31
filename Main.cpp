@@ -30,6 +30,74 @@ public:
 
 int main(int argc, char const *argv[])
 {
+    string menu;
+    system("cls");
+    do
+    {
+        system("cls");
+        headerMenu();
+        cout << "Silahkan Pilih Menu : ";
+        cin >> menu;
+        if (menu == "1")
+        {
+            system("cls");
+            string username, password;
+            int login = 0;
+            cout << "+======================+" << endl;
+            cout << "|      LOGIN USER      |" << endl;
+            cout << "+======================+\n"
+                 << endl;
+            cout << "Masukkan Username : ";
+            cin >> username;
+            cout << "Masukkan Password : ";
+            cin >> password;
+            User *user = new User(username, password);
+            login = user->login(username, password);
+            if (login == 1)
+            {
+                cout << "\nPassword Salah" << endl;
+                system("pause");
+            }
+            else if (login == 2)
+            {
+                cout << "\nSukses Login" << endl;
+                system("pause");
+                dashboard(user);
+            }
+            else
+            {
+                cout << "\nUsername dan Password Salah" << endl;
+                system("pause");
+            }
+        }
+        else if (menu == "2")
+        {
+            system("cls");
+            bool cek = false;
+            while (!cek)
+            {
 
+                string username, password;
+                cout << "+=======================+" << endl;
+                cout << "|     REGISTER USER     |" << endl;
+                cout << "+=======================+\n"
+                     << endl;
+                cout << "Masukkan Username : ";
+                cin >> username;
+                cout << "Masukkan Password : ";
+                cin >> password;
+                User *user = new User(username, password);
+                if (user->daftar() == 1)
+                {
+                    cek = true;
+                }
+            }
+        }
+        else
+        {
+            system("cls");
+        }
+    } while (menu != "3");
+    footer();
     return 0;
 }
