@@ -27,6 +27,13 @@ public:
     bool daftar();
     int login(string username, string password);
 };
+// prototype method header
+void headerScreen();
+void headerMenu();
+void headerMenuUser();
+
+// prototype method footer
+void footer();
 
 int main(int argc, char const *argv[])
 {
