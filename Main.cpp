@@ -233,6 +233,64 @@ void dashboard(User *user)
             }
             system("pause");
         }
+        else if (menu == "3")
+        {
+            string user, nilai1, nilai2, nilai3, total;
+            ifstream buka;
+            system("cls");
+            cout << "+==========================================================================+" << endl;
+            cout << "|                            HASIL PERTANDINGAN                            |" << endl;
+            cout << "+==========================================================================+" << endl;
+            cout << "| NO |    NAMA PESERTA    | NILAI KE-1 | NILAI KE-2 | NILAI KE-3 |  TOTAL  |" << endl;
+            cout << "+--------------------------------------------------------------------------+" << endl;
+            buka.open("data/dataLomba.txt", ios::in);
+            int no = 1, cek = 0;
+            if (buka.fail())
+            {
+                cout << "|                       HASIL PERTANDINGAN TIDAK ADA                       |" << endl;
+                cout << "+==========================================================================+" << endl;
+
+                system("pause");
+            }
+            else
+            {
+                while (buka.eof() == 0)
+                {
+                    buka >> user;
+                    buka >> nilai1;
+                    buka >> nilai2;
+                    buka >> nilai3;
+                    buka >> total;
+                    if (buka.eof() == 0)
+                    {
+                        cek++;
+                        cout << "| " << setiosflags(ios::left) << setw(3) << no++
+                             << "|"
+                             << " " << setiosflags(ios::left) << setw(19) << user
+                             << "|"
+                             << " " << setiosflags(ios::left) << setw(11) << hitungNomor(stoi(nilai1))
+                             << "|"
+                             << " " << setiosflags(ios::left) << setw(11) << hitungNomor(stoi(nilai2))
+                             << "|"
+                             << " " << setiosflags(ios::left) << setw(11) << hitungNomor(stoi(nilai3))
+                             << "|"
+                             << " " << setiosflags(ios::left) << setw(8) << total
+                             << "|\n";
+                        cout << "+--------------------------------------------------------------------------+" << endl;
+                    }
+                }
+                buka.close();
+                if (cek == 0)
+                {
+
+                    cout << "|                       HASIL PERTANDINGAN TIDAK ADA                       |" << endl;
+                    cout << "+==========================================================================+" << endl;
+                }
+
+                cout << endl;
+                system("pause");
+            }
+        }
 
     } while (menu != "5");
 };
