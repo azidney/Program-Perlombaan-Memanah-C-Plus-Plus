@@ -27,6 +27,7 @@ public:
     bool daftar();
     int login(string username, string password);
 };
+
 // prototype method header
 void headerScreen();
 void headerMenu();
@@ -108,3 +109,42 @@ int main(int argc, char const *argv[])
     footer();
     return 0;
 }
+
+// method header
+void headerScreen()
+{
+    cout << "+===================================+" << endl;
+    cout << "| SELAMAT DATANG DI PROGRAM MEMANAH |" << endl;
+    cout << "+===================================+" << endl;
+    cout << endl;
+}
+void headerMenu()
+{
+    headerScreen();
+    cout << "+==============+" << endl;
+    cout << "|     MENU     |" << endl;
+    cout << "|==============|" << endl;
+    cout << "| 1. Login     |\n| 2. Register  |\n| 3. Exit      |\n";
+    cout << "+==============+" << endl;
+};
+void footer();
+void headerMenuUser()
+{
+    cout << "+=======================+" << endl;
+    cout << "|       MENU USER       |" << endl;
+    cout << "|=======================|" << endl;
+    cout << "| 1. Lomba Memanah      |" << endl;
+    cout << "| 2. Cari Peserta       |" << endl;
+    cout << "| 3. Hasil Pertandingan |" << endl;
+    cout << "| 4. Daftar Juara       |" << endl;
+    cout << "| 5. Logout             |" << endl;
+    cout << "+=======================+" << endl;
+};
+
+// method footer
+void footer()
+{
+    cout << "+===============================+" << endl;
+    cout << "| TERIMAKASIH TELAH BERKUNGJUNG |" << endl;
+    cout << "+===============================+" << endl;
+};
