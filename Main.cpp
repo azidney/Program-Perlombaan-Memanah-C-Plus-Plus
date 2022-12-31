@@ -153,6 +153,86 @@ void dashboard(User *user)
             }
             buka.close();
         }
+        else if (menu == "2")
+        {
+            string username, user, nilai1, nilai2, nilai3, total;
+            int cek = 0;
+            ifstream buka;
+            system("cls");
+            cout << "+==========================+" << endl;
+            cout << "|       CARI PESERTA       |" << endl;
+            cout << "+==========================+\n"
+                 << endl;
+            cout << "Masukkan Username : ";
+            cin >> username;
+            buka.open("data/dataUser.txt", ios::in);
+            while (!buka.eof())
+            {
+                buka >> user;
+                if (username == user)
+                {
+                    cek++;
+                    break;
+                }
+            }
+            buka.close();
+            if (cek > 0)
+            {
+                system("cls");
+                cout << "+=========================+" << endl;
+                cout << "|    PESERTA DITEMUKAN    |" << endl;
+                cout << "+=========================+\n"
+                     << endl;
+                cout << "Username : " << username << endl;
+                buka.open("data/dataLomba.txt", ios::in);
+                int cekLomba = 0;
+                while (!buka.eof())
+                {
+                    buka >> user;
+                    buka >> nilai1;
+                    buka >> nilai2;
+                    buka >> nilai3;
+                    buka >> total;
+                    cout << user << endl;
+                    if (username == user)
+                    {
+                        cekLomba = 2;
+                        break;
+                    }
+                    else
+                    {
+                        cekLomba = 1;
+                    }
+                }
+                cout << cekLomba << endl;
+                buka.close();
+                if (cekLomba > 1)
+                {
+                    cout << "\n+=========================+" << endl;
+                    cout << "|    Hasil Pertandingan   |" << endl;
+                    cout << "+=========================+\n"
+                         << endl;
+                    cout << "Nilai Sasaran ke-1 : " << hitungNomor(stoi(nilai1)) << endl;
+                    cout << "Nilai Sasaran ke-2 : " << hitungNomor(stoi(nilai2)) << endl;
+                    cout << "Nilai Sasaran ke-3 : " << hitungNomor(stoi(nilai3)) << endl;
+                    cout << "Total Perolehan Nilai : " << total << "\n"
+                         << endl;
+                }
+                else
+                {
+                    cout << "\n* Peserta belum melakukan perlombaan\n\n";
+                }
+            }
+            else
+            {
+                system("cls");
+                cout << "+==============================+" << endl;
+                cout << "|    MAAF PESERTA TIDAK ADA    |" << endl;
+                cout << "+==============================+\n"
+                     << endl;
+            }
+            system("pause");
+        }
 
     } while (menu != "5");
 };
