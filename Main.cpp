@@ -217,7 +217,6 @@ void dashboard(User *user)
                     buka >> nilai2;
                     buka >> nilai3;
                     buka >> total;
-                    cout << user << endl;
                     if (username == user)
                     {
                         cekLomba = 2;
@@ -228,7 +227,6 @@ void dashboard(User *user)
                         cekLomba = 1;
                     }
                 }
-                cout << cekLomba << endl;
                 buka.close();
                 if (cekLomba > 1)
                 {
