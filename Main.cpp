@@ -36,6 +36,21 @@ void headerMenuUser();
 // prototype method footer
 void footer();
 
+// method dashboard user (menu - menu yang ada di user)
+void dashboard(User *user)
+{
+
+    string menu;
+    do
+    {
+        system("cls");
+        headerMenuUser();
+        cout << "Selamat datang, " << user->getUsername() << " !!" << endl;
+        cout << "Silahkan Pilih Menu : ";
+        cin >> menu;
+    } while (menu != "5");
+};
+
 int main(int argc, char const *argv[])
 {
     string menu;
