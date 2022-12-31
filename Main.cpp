@@ -110,6 +110,70 @@ int main(int argc, char const *argv[])
     return 0;
 }
 
+// method login dan register user
+int User::login(string username, string password)
+{
+    int login = 0;
+    nampilin.open(namafile, ios::in);
+    if (nampilin.fail())
+    {
+        login = 0;
+    }
+    else
+    {
+        while (!nampilin.eof())
+        {
+            nampilin >> username;
+            nampilin >> password;
+            if (username == this->username || password == this->password)
+            {
+                if (username == this->username)
+                {
+                    login = 1;
+                }
+
+                if (password == this->password)
+                {
+                    login = login + 1;
+                }
+                if (password != this->password)
+                {
+                    login = login + 0;
+                }
+                if (username != this->username)
+                {
+                    login = 0;
+                }
+                break;
+            }
+            else
+            {
+                login = 0;
+                continue;
+            }
+        }
+    }
+    nampilin.close();
+    switch (login)
+    {
+    case 0:
+        // cout << "Username dan Password Salah" << endl;
+        return 0;
+        break;
+    case 1:
+        // cout << "Password Salah" << endl;
+        return 1;
+        break;
+    case 2:
+        // cout << "Sukses" << endl;
+        return 2;
+        break;
+    default:
+        return 0;
+        break;
+    }
+};
+
 // method header
 void headerScreen()
 {
