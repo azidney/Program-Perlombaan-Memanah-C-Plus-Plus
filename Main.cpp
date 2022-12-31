@@ -174,6 +174,77 @@ int User::login(string username, string password)
     }
 };
 
+bool User::daftar()
+{
+
+    string username, password, pilihan = "0";
+    bool cek = true;
+    masukin.open(namafile, ios::app);
+    masukin.close();
+    nampilin.open(namafile, ios::in);
+    while (!nampilin.eof())
+    {
+        nampilin >> username;
+        nampilin >> password;
+        if (username == this->username)
+        {
+            bool kosong = false;
+            cout << "\nUsername Sudah Ada yang Punya!!\n"
+                 << endl;
+            while (!kosong)
+            {
+                cout << "1. Daftar Ulang\n2. Ke Halaman Login\nPilih : ";
+                cin >> pilihan;
+                if (pilihan == "1")
+                {
+                    system("cls");
+                    cek = false;
+                    pilihan = "1";
+                    kosong = true;
+                }
+                else if (pilihan == "2")
+                {
+                    system("cls");
+                    cek = false;
+                    pilihan = "2";
+                    kosong = true;
+                }
+                else
+                {
+                    cout << "Coba Lagi" << endl;
+                    system("cls");
+                }
+            }
+            break;
+        }
+    }
+    nampilin.close();
+    if (cek)
+    {
+        masukin.open(namafile, ios::app);
+        masukin << this->getUser();
+        cout << "\nBerhasil Daftar!!" << endl;
+        system("pause");
+        masukin.close();
+        return 1;
+    }
+    else
+    {
+        if (pilihan == "1")
+        {
+            return 0;
+        }
+        else if (pilihan == "2")
+        {
+            return 1;
+        }
+        else
+        {
+            return 0;
+        }
+    }
+}
+
 // method header
 void headerScreen()
 {
@@ -191,7 +262,6 @@ void headerMenu()
     cout << "| 1. Login     |\n| 2. Register  |\n| 3. Exit      |\n";
     cout << "+==============+" << endl;
 };
-void footer();
 void headerMenuUser()
 {
     cout << "+=======================+" << endl;
