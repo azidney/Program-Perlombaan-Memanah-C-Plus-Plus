@@ -333,6 +333,7 @@ void dashboard(User *user)
                         }
                     }
 
+                    // algoritma insertion search untuk mencari juara lomba (dilihat dari nilai yang terbesar)
                     string temp2, temp3;
                     for (int b = 1; b < rowsData; b++)
                     {
