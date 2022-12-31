@@ -15,7 +15,7 @@ private:
     string password = "null";
     ofstream masukin;
     ifstream nampilin;
-    string namafile = "data/dataUser.txt";
+    string namafile = "dataUser.txt";
 
 public:
     // constructor user
@@ -90,12 +90,12 @@ void dashboard(User *user)
         if (menu == "1")
         {
             ofstream bikin;
-            bikin.open("data/dataLomba.txt", ios::app);
+            bikin.open("dataLomba.txt", ios::app);
             bikin.close();
             ifstream buka;
             int cek = 0;
             string username;
-            buka.open("data/dataLomba.txt", ios::in);
+            buka.open("dataLomba.txt", ios::in);
             while (!buka.eof())
             {
                 buka >> username;
@@ -162,7 +162,7 @@ void dashboard(User *user)
 
                 newNomor += to_string(total);
                 ofstream simpan;
-                simpan.open("data/dataLomba.txt", ios::app);
+                simpan.open("dataLomba.txt", ios::app);
                 simpan << newNomor << "\n";
                 simpan.close();
                 system("pause");
@@ -189,7 +189,7 @@ void dashboard(User *user)
                  << endl;
             cout << "Masukkan Username : ";
             cin >> username;
-            buka.open("data/dataUser.txt", ios::in);
+            buka.open("dataUser.txt", ios::in);
             while (!buka.eof())
             {
                 buka >> user;
@@ -208,7 +208,7 @@ void dashboard(User *user)
                 cout << "+=========================+\n"
                      << endl;
                 cout << "Username : " << username << endl;
-                buka.open("data/dataLomba.txt", ios::in);
+                buka.open("dataLomba.txt", ios::in);
                 int cekLomba = 0;
                 while (!buka.eof())
                 {
@@ -267,7 +267,7 @@ void dashboard(User *user)
             cout << "+==========================================================================+" << endl;
             cout << "| NO |    NAMA PESERTA    | NILAI KE-1 | NILAI KE-2 | NILAI KE-3 |  TOTAL  |" << endl;
             cout << "+--------------------------------------------------------------------------+" << endl;
-            buka.open("data/dataLomba.txt", ios::in);
+            buka.open("dataLomba.txt", ios::in);
             int no = 1, cek = 0;
             if (buka.fail())
             {
@@ -323,7 +323,7 @@ void dashboard(User *user)
             system("cls");
             cout << "+===================================================+" << endl;
             cout << "|                    DAFTAR JUARA                   |" << endl;
-            buka.open("data/dataLomba.txt", ios::in);
+            buka.open("dataLomba.txt", ios::in);
             int sizeData = 0;
             if (buka.fail())
             {
@@ -358,7 +358,7 @@ void dashboard(User *user)
                 else
                 {
                     buka.close();
-                    buka.open("data/dataLomba.txt", ios::in);
+                    buka.open("dataLomba.txt", ios::in);
                     string data[sizeData][2];
                     int rowsData = sizeof(data) / sizeof(data[0]);
                     int colsData = sizeof(data[0]) / sizeof(data[0][0]);
