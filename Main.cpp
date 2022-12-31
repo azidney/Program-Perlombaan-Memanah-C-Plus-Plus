@@ -291,6 +291,116 @@ void dashboard(User *user)
                 system("pause");
             }
         }
+        else if (menu == "4")
+        {
+            string user, nilai1, nilai2, nilai3, total, cekData;
+            int no = 1, cek = 0, index = 0;
+            ifstream buka;
+            system("cls");
+            cout << "+===================================================+" << endl;
+            cout << "|                    DAFTAR JUARA                   |" << endl;
+            buka.open("data/dataLomba.txt", ios::in);
+            int sizeData = 0;
+            if (buka.fail())
+            {
+                cout << "+===================================================+" << endl;
+                cout << "|                  JUARA BELUM ADA                  |" << endl;
+                cout << "+===================================================+" << endl;
+
+                system("pause");
+            }
+            else
+            {
+                while (buka.eof() == 0)
+                {
+
+                    buka >> user;
+                    buka >> nilai1;
+                    buka >> nilai2;
+                    buka >> nilai3;
+                    buka >> total;
+                    if (buka.eof() == 0)
+                    {
+                        cek++;
+                        sizeData = sizeData + 1;
+                    }
+                }
+                if (cek == 0)
+                {
+                    cout << "+===================================================+" << endl;
+                    cout << "|                  JUARA BELUM ADA                  |" << endl;
+                    cout << "+===================================================+" << endl;
+                }
+                else
+                {
+                    buka.close();
+                    buka.open("data/dataLomba.txt", ios::in);
+                    string data[sizeData][2];
+                    int rowsData = sizeof(data) / sizeof(data[0]);
+                    int colsData = sizeof(data[0]) / sizeof(data[0][0]);
+                    while (buka.eof() == 0)
+                    {
+                        buka >> user;
+                        buka >> nilai1;
+                        buka >> nilai2;
+                        buka >> nilai3;
+                        buka >> total;
+                        if (buka.eof() == 0)
+                        {
+                            data[index][0] = user;
+                            data[index][1] = total;
+                            index++;
+                        }
+                    }
+
+                    string temp2, temp3;
+                    for (int b = 1; b < rowsData; b++)
+                    {
+                        for (int c = b; c > 0; c--)
+                        {
+                            if (stoi(data[c][1]) > stoi(data[c - 1][1]))
+                            {
+                                temp2 = data[c][1];
+                                temp3 = data[c][0];
+                                data[c][1] = data[c - 1][1];
+                                data[c][0] = data[c - 1][0];
+                                data[c - 1][0] = temp3;
+                                data[c - 1][1] = temp2;
+                            }
+                            else
+                            {
+                                break;
+                            }
+                        }
+                    }
+                    cout << "+===================================================+" << endl;
+                    cout << "| NO |    NAMA PESERTA    | TOTAL NILAI |   JUARA   |" << endl;
+                    cout << "+===================================================+" << endl;
+                    int nomors = 1;
+                    int juar = 1;
+                    for (int i = 0; i < rowsData; i++)
+                    {
+
+                        cout << "| " << setiosflags(ios::left) << setw(3) << nomors++ << "| ";
+                        for (int j = 0; j < 1; j++)
+                        {
+                            cout << setw(5) << " " << setiosflags(ios::left) << setw(14) << data[i][0] << "|";
+                            cout << setw(5) << " " << setiosflags(ios::left) << setw(8) << data[i][1] << "|  ";
+                        }
+                        cout << setiosflags(ios::left) << setw(9) << juara(juar) << "|";
+                        juar++;
+                        cout << endl;
+                        if (i >= 4)
+                        {
+                            break;
+                        }
+                    }
+                    cout << "+===================================================+" << endl;
+                }
+                buka.close();
+                system("pause");
+            }
+        }
 
     } while (menu != "5");
 };
