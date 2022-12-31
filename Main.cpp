@@ -36,6 +36,21 @@ void headerMenuUser();
 // prototype method footer
 void footer();
 
+// method algoritma lomba memanah
+int hitungNomor(int i)
+{
+    int nomor = 0;
+    for (int a = 1; a <= 10; ++a)
+    {
+        if (a == i)
+        {
+            nomor = 100 - ((a * 10) - 10);
+            break;
+        }
+    }
+    return nomor;
+}
+
 // method dashboard user (menu - menu yang ada di user)
 void dashboard(User *user)
 {
