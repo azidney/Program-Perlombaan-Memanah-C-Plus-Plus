@@ -48,6 +48,97 @@ void dashboard(User *user)
         cout << "Selamat datang, " << user->getUsername() << " !!" << endl;
         cout << "Silahkan Pilih Menu : ";
         cin >> menu;
+        if (menu == "1")
+        {
+            ofstream bikin;
+            bikin.open("data/dataLomba.txt", ios::app);
+            bikin.close();
+            ifstream buka;
+            int cek = 0;
+            string username;
+            buka.open("data/dataLomba.txt", ios::in);
+            while (!buka.eof())
+            {
+                buka >> username;
+                if (username == user->getUsername())
+                {
+                    cek++;
+                    break;
+                }
+            }
+            if (cek == 0)
+            {
+                system("cls");
+                cout << "+============================+" << endl;
+                cout << "|      PROGRAM MEMANAH       |" << endl;
+                cout << "+============================+" << endl;
+                cout << "KETENTUAN : " << endl;
+                cout << "1. Peserta memili Kesempatan memanah sebanyak 3x" << endl;
+                cout << "2. Sasaran memanah diberi nomor 1 hingga 10" << endl;
+                cout << "3. Jika mengenai sasaran no 1, maka mendapatkan nilai adalah 100" << endl;
+                cout << "4. Jika mengenari sasaran no 2, maka mendapatkan nilai adalah 90" << endl;
+                cout << "5. Begitupun sasaran memanah berikutnya" << endl;
+                cout << "6. Nilai total diperoleh dari akumulasi nilai" << endl;
+                cout << "7. Good Luck !!\n"
+                     << endl;
+                system("pause");
+                system("cls");
+                cout << "+==========================+" << endl;
+                cout << "|      LOMBA MEMANAH       |" << endl;
+                cout << "+==========================+" << endl;
+                int nomor[3];
+                int nomorInput = 0;
+                int nomorSize = sizeof(nomor) / sizeof(*nomor);
+                for (int i = 0; i < nomorSize; i++)
+                {
+
+                    cout << "\nSasaran ke-" << i + 1;
+                    cout << "\nMasukkan Nomor (1-10) : ";
+                    cin >> nomorInput;
+                    if (nomorInput > 10 || nomorInput < 1)
+                    {
+                        cout << "Nomor yang anda masukkan salah" << endl;
+                        nomor[i] = 0;
+                        continue;
+                    }
+                    else
+                    {
+                        nomor[i] = nomorInput;
+                        continue;
+                    }
+                }
+                int total = 0;
+                for (int i = 0; i < nomorSize; i++)
+                {
+                    total += hitungNomor(nomor[i]);
+                }
+
+                string newNomor = user->getUsername();
+                newNomor += " ";
+                for (int i = 0; i < nomorSize; i++)
+                {
+                    newNomor += to_string(nomor[i]);
+                    newNomor += " ";
+                }
+
+                newNomor += to_string(total);
+                ofstream simpan;
+                simpan.open("data/dataLomba.txt", ios::app);
+                simpan << newNomor << "\n";
+                simpan.close();
+                system("pause");
+            }
+            else
+            {
+                system("cls");
+                cout << "+==========================================+" << endl;
+                cout << "|      ANDA SUDAH MELAKUKAN PERLOMBAAN     |" << endl;
+                cout << "+==========================================+" << endl;
+                system("pause");
+            }
+            buka.close();
+        }
+
     } while (menu != "5");
 };
 
