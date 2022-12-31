@@ -31,11 +31,16 @@ public:
 // prototype method header
 void headerMenuAwal();
 void menuAwal();
+void headerLogin();
+void headerRegister();
 void headerMenuUser();
 void headerFiturLomba();
 void headerFiturCariPeserta();
 void headerFiturHasilPertandingan();
 void headerFiturDaftarJuara();
+
+// prototype kata - kata
+void syaratLomba();
 
 // prototype method footer
 void footer();
@@ -80,15 +85,7 @@ void dashboard(User *user)
             {
                 system("cls");
                 headerFiturLomba();
-                cout << "KETENTUAN : " << endl;
-                cout << "1. Peserta memili Kesempatan memanah sebanyak 3x" << endl;
-                cout << "2. Sasaran memanah diberi nomor 1 hingga 10" << endl;
-                cout << "3. Jika mengenai sasaran no 1, maka mendapatkan nilai adalah 100" << endl;
-                cout << "4. Jika mengenari sasaran no 2, maka mendapatkan nilai adalah 90" << endl;
-                cout << "5. Begitupun sasaran memanah berikutnya" << endl;
-                cout << "6. Nilai total diperoleh dari akumulasi nilai" << endl;
-                cout << "7. Good Luck !!\n"
-                     << endl;
+                syaratLomba();
                 system("pause");
                 system("cls");
                 cout << "+==========================+" << endl;
@@ -403,10 +400,7 @@ int main(int argc, char const *argv[])
             system("cls");
             string username, password;
             int login = 0;
-            cout << "+======================+" << endl;
-            cout << "|      LOGIN USER      |" << endl;
-            cout << "+======================+\n"
-                 << endl;
+            headerLogin();
             cout << "Masukkan Username : ";
             cin >> username;
             cout << "Masukkan Password : ";
@@ -438,10 +432,7 @@ int main(int argc, char const *argv[])
             {
 
                 string username, password;
-                cout << "+=======================+" << endl;
-                cout << "|     REGISTER USER     |" << endl;
-                cout << "+=======================+\n"
-                     << endl;
+                headerRegister();
                 cout << "Masukkan Username : ";
                 cin >> username;
                 cout << "Masukkan Password : ";
@@ -672,6 +663,22 @@ void menuAwal()
     cout << "| 1. Login     |\n| 2. Register  |\n| 3. Exit      |\n";
     cout << "+==============+" << endl;
 };
+
+void headerLogin()
+{
+    cout << "+======================+" << endl;
+    cout << "|      LOGIN USER      |" << endl;
+    cout << "+======================+\n"
+         << endl;
+}
+
+void headerRegister()
+{
+    cout << "+=======================+" << endl;
+    cout << "|     REGISTER USER     |" << endl;
+    cout << "+=======================+\n"
+         << endl;
+}
 void headerMenuUser()
 {
     cout << "+=======================+" << endl;
@@ -712,6 +719,20 @@ void headerFiturDaftarJuara()
     cout << "+===================================================+" << endl;
     cout << "|                    DAFTAR JUARA                   |" << endl;
 };
+
+// method kata - kata
+void syaratLomba()
+{
+    cout << "KETENTUAN : " << endl;
+    cout << "1. Peserta memili Kesempatan memanah sebanyak 3x" << endl;
+    cout << "2. Sasaran memanah diberi nomor 1 hingga 10" << endl;
+    cout << "3. Jika mengenai sasaran no 1, maka mendapatkan nilai adalah 100" << endl;
+    cout << "4. Jika mengenari sasaran no 2, maka mendapatkan nilai adalah 90" << endl;
+    cout << "5. Begitupun sasaran memanah berikutnya" << endl;
+    cout << "6. Nilai total diperoleh dari akumulasi nilai" << endl;
+    cout << "7. Good Luck !!\n"
+         << endl;
+}
 // method footer
 void footer()
 {
