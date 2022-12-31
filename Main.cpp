@@ -110,6 +110,24 @@ int main(int argc, char const *argv[])
     return 0;
 }
 
+// method constructor
+User::User(string username, string password)
+{
+    this->username = username;
+    this->password = password;
+}
+
+// method untuk user
+string User::getUser()
+{
+    return this->username + " " + this->password + "\n";
+}
+
+string User::getUsername()
+{
+    return this->username;
+}
+
 // method login dan register user
 int User::login(string username, string password)
 {
